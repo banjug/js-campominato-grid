@@ -17,6 +17,10 @@ body {
     flex-wrap: wrap;
 }
 
+*[class^="square"] {
+    border: solid 5px #2a9d8f;
+    cursor: pointer;
+  }
 
 .squareEasy {
     width: 10%;
@@ -36,8 +40,5 @@ body {
 
 .active {
     background-color: #2a9d8f;
+    cursor: not-allowed;
 }
-
-div[class^="square"] {
-    border: solid 5px #2a9d8f;
-  }

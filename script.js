@@ -12,10 +12,13 @@
 
 */
 
+// seleziona container griglia
 const gridContainer = document.getElementById('container');
+// selezione difficoltà
 const difficultySel = prompt("Seleziona la difficoltà tra 'facile', 'medio' e 'difficile'.");
 
 
+// generazione griglia in base a difficoltà
 if (difficultySel == "facile") {
 
     for (let i = 0; i < 100; i++) {
@@ -38,6 +41,28 @@ if (difficultySel == "facile") {
     }
 }
 
+// al click sul quadratino cambia lo sfondo
+let squareClick = document.querySelectorAll('[class^="square"]');
+console.log(squareClick);
+
+for (let i = 0; i < squareClick.length; i++) {
+        squareClick[i].addEventListener ('click', 
+        function() {
+            squareClick[i].classList.add('active');
+        }
+    );
+}
+
+
+
+
+
+
+
+
+
+// ------------------------------------------------------------
+// funzioni----------------------------------------------------
 
 function elementGenerator(x, y) {
     let gridSquare = document.createElement(x);
