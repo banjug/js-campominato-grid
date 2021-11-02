@@ -12,52 +12,98 @@
 
 */
 
-// seleziona container griglia
-const gridContainer = document.getElementById('container');
-// selezione difficoltà
-const difficultySel = prompt("Seleziona la difficoltà tra 'facile', 'medio' e 'difficile'.");
 
+
+// ------------------------------------------------------------
+// seleziona container griglia---------------------------------
+// const gridContainer = document.getElementById('container');
+
+
+// ------------------------------------------------------------
+// versione prompt---------------------------------------------
+
+// selezione difficoltà
+// const difficultySel = prompt("Seleziona la difficoltà tra 'facile', 'medio' e 'difficile'.");
 
 // generazione griglia in base a difficoltà
-if (difficultySel == "facile") {
+// if (difficultySel == "facile") {
 
-    for (let i = 0; i < 100; i++) {
-        let newElem = elementGenerator("div", "squareEasy");
-        gridContainer.appendChild(newElem);
-    }
+//     for (let i = 0; i < 100; i++) {
+//         let newElem = elementGenerator("div", "squareEasy");
+//         gridContainer.appendChild(newElem);
+//     }
 
-} else if (difficultySel == "medio") {
+// } else if (difficultySel == "medio") {
 
-    for (let i = 0; i < 81; i++) {
-        let newElem = elementGenerator("div", "squareMedium");
-        gridContainer.appendChild(newElem);
-    }
+//     for (let i = 0; i < 81; i++) {
+//         let newElem = elementGenerator("div", "squareMedium");
+//         gridContainer.appendChild(newElem);
+//     }
 
-} else if (difficultySel == "difficile") {
+// } else if (difficultySel == "difficile") {
 
-    for (let i = 0; i < 49; i++) {
-        let newElem = elementGenerator("div", "squareHard");
-        gridContainer.appendChild(newElem);
-    }
-}
+//     for (let i = 0; i < 49; i++) {
+//         let newElem = elementGenerator("div", "squareHard");
+//         gridContainer.appendChild(newElem);
+//     }
+// }
 
 // al click sul quadratino cambia lo sfondo
-let squareClick = document.querySelectorAll('[class^="square"]');
-console.log(squareClick);
+// let squareClick = document.querySelectorAll('[class^="square"]');
+// console.log(squareClick);
 
-for (let i = 0; i < squareClick.length; i++) {
-        squareClick[i].addEventListener ('click', 
-        function() {
-            squareClick[i].classList.add('active');
-        }
-    );
-}
-
-
+// for (let i = 0; i < squareClick.length; i++) {
+//         squareClick[i].addEventListener ('click', 
+//         function() {
+//             squareClick[i].classList.add('active');
+//         }
+//     );
+// }
 
 
 
+// ------------------------------------------------------------
+// versione con pulsanti---------------------------------------
 
+// seleziona container griglia
+const gridContainer = document.getElementById('container');
+
+const easyBtn = document.getElementById("btnEasy");
+const mediumBtn = document.getElementById("btnMedium");
+const hardBtn = document.getElementById("btnHard");
+
+easyBtn.addEventListener('click', 
+    function() {
+        gridContainer.innerHTML = "";
+
+        squareDifficulty(100, "squareEasy")
+
+        squareClickAdd('[class^="square"]', 'active')
+        
+    }
+);
+
+mediumBtn.addEventListener('click', 
+    function() {
+        gridContainer.innerHTML = "";
+
+        squareDifficulty(81, "squareMedium")    
+
+        squareClickAdd('[class^="square"]', 'active')
+        
+    }
+    
+);
+
+hardBtn.addEventListener('click', 
+    function() {
+        gridContainer.innerHTML = "";
+
+        squareDifficulty(49, "squareHard")
+
+        squareClickAdd('[class^="square"]', 'active')
+    }
+);
 
 
 
@@ -68,4 +114,24 @@ function elementGenerator(x, y) {
     let gridSquare = document.createElement(x);
     gridSquare.classList.add(y);
     return gridSquare
+}
+
+function squareDifficulty(x, y) {
+    for (let i = 0; i < x; i++) {
+        let newElem = elementGenerator("div", y);
+        gridContainer.appendChild(newElem);
+    }
+}
+
+function squareClickAdd(x, y) {
+    let squareClick = document.querySelectorAll(x);
+        console.log(squareClick);
+
+        for (let i = 0; i < squareClick.length; i++) {
+            squareClick[i].addEventListener ('click', 
+                function() {
+                    squareClick[i].classList.add(y);
+                }
+            );
+        }
 }
