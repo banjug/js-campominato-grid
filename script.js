@@ -10,5 +10,37 @@
     (tutto questo sta in una funzione - la posso richiamare al click o inserendo la difficoltà nel prompt)
 3. al clic del giocatore cambiare il colore del singolo quadratino -> aggiungere classe active che cambia lo sfondo con addEventListener
 
-
 */
+
+const gridContainer = document.getElementById('container');
+const difficultySel = prompt("Seleziona la difficoltà tra 'facile', 'medio' e 'difficile'.");
+
+
+if (difficultySel == "facile") {
+
+    for (let i = 0; i < 100; i++) {
+        let newElem = elementGenerator("div", "squareEasy");
+        gridContainer.appendChild(newElem);
+    }
+
+} else if (difficultySel == "medio") {
+
+    for (let i = 0; i < 81; i++) {
+        let newElem = elementGenerator("div", "squareMedium");
+        gridContainer.appendChild(newElem);
+    }
+
+} else if (difficultySel == "difficile") {
+
+    for (let i = 0; i < 49; i++) {
+        let newElem = elementGenerator("div", "squareHard");
+        gridContainer.appendChild(newElem);
+    }
+}
+
+
+function elementGenerator(x, y) {
+    let gridSquare = document.createElement(x);
+    gridSquare.classList.add(y);
+    return gridSquare
+}

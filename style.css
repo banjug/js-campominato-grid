@@ -17,21 +17,19 @@ body {
     flex-wrap: wrap;
 }
 
-.square {
-    border: solid 5px #2a9d8f;
-}
 
-.square.easy {
+.squareEasy {
     width: 10%;
     height: 10%;
 }
 
-.square.medium {
+
+.squareMedium {
     width: calc(100% / 9);
     height: calc(100% / 9);
 }
 
-.square.hard {
+.squareHard {
     width: calc(100% / 7);
     height: calc(100% / 7);
 }
@@ -39,3 +37,7 @@ body {
 .active {
     background-color: #2a9d8f;
 }
+
+div[class^="square"] {
+    border: solid 5px #2a9d8f;
+  }
