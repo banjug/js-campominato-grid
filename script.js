@@ -76,7 +76,7 @@ easyBtn.addEventListener('click',
     function() {
         gridContainer.innerHTML = "";
 
-        squareDifficulty(100, "squareEasy")
+        gridDifficulty(100, "squareEasy")
 
         squareClickAdd('[class^="square"]', 'active')
         
@@ -87,7 +87,7 @@ mediumBtn.addEventListener('click',
     function() {
         gridContainer.innerHTML = "";
 
-        squareDifficulty(81, "squareMedium")    
+        gridDifficulty(81, "squareMedium")    
 
         squareClickAdd('[class^="square"]', 'active')
         
@@ -99,7 +99,7 @@ hardBtn.addEventListener('click',
     function() {
         gridContainer.innerHTML = "";
 
-        squareDifficulty(49, "squareHard")
+        gridDifficulty(49, "squareHard")
 
         squareClickAdd('[class^="square"]', 'active')
     }
@@ -110,15 +110,15 @@ hardBtn.addEventListener('click',
 // ------------------------------------------------------------
 // funzioni----------------------------------------------------
 
-function elementGenerator(x, y) {
+function squareGenerator(x, y) {
     let gridSquare = document.createElement(x);
     gridSquare.classList.add(y);
     return gridSquare
 }
 
-function squareDifficulty(x, y) {
+function gridDifficulty(x, y) {
     for (let i = 0; i < x; i++) {
-        let newElem = elementGenerator("div", y);
+        let newElem = squareGenerator("div", y);
         gridContainer.appendChild(newElem);
     }
 }
@@ -131,6 +131,7 @@ function squareClickAdd(x, y) {
             squareClick[i].addEventListener ('click', 
                 function() {
                     squareClick[i].classList.add(y);
+                    squareClick[i].innerText = i + 1;
                 }
             );
         }
